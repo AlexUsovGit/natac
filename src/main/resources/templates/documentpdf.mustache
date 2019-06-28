@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Товары</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
+
+</head>
+<body>
+
+<div><a href="/producttable">Список товаров</a></div>
+
+
+<div align="center">
+    <form method="post">
+
+
+    </form>
+</div>
+
+
+
+<div>
+    {{#products}}
+
+
+    <div>
+    <p>Этикетка. Штрихкод "{{barcode}}".</p>
+        <form method="post" action="/getpdf">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}">
+            <input type="text" name="filter" value="{{barcode}}" style="display: none">
+            <p>Введите количество этикеток.</p>
+            <input type="text" name="count" value="1" >
+
+            <button type="submit" style="margin-top: 25px">Сформировать и загрузить</button>
+        </form>
+    {{/products}}
+</div>
+</div>
+</body>
+</html>
